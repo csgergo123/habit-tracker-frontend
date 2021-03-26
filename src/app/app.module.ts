@@ -16,9 +16,7 @@ import { CommonModule } from "@angular/common";
 
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
-import { LoadingSpinnerComponent } from "src/shared/loading-spinner/loading-spinner.component";
-import { AuthGuard } from "./layouts/admin-layout/auth.guard";
-import { HabitsComponent } from './pages/habits/habits.component';
+import { HabitsComponent } from "./pages/habits/habits.component";
 
 @NgModule({
   imports: [
@@ -36,7 +34,6 @@ import { HabitsComponent } from './pages/habits/habits.component';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    LoadingSpinnerComponent,
     HabitsComponent,
   ],
   providers: [AuthService],
