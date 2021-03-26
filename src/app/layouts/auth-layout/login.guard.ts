@@ -20,8 +20,8 @@ export class LoginGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    const token = this.authService.getToken();
-    if (!token) {
+    const user = this.authService.currentUser;
+    if (!user) {
       return true;
     }
     return this.router.createUrlTree(["/dashboard"]);

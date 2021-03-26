@@ -2,11 +2,11 @@ import { CreateUserDto } from "../models/user/dto/create-user.dto";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
-import { map, tap } from "rxjs/operators";
+import { map } from "rxjs/operators";
 import { JwtHelperService } from "@auth0/angular-jwt";
 
 import { User } from "../models/user/entities/User";
-import { RegisterWith } from "../models/user/entities/register-with";
+import { RegisterWith } from "../models/user/entities/register-with.enum";
 
 interface AuthResponseData {
   accessToken: string;
@@ -76,7 +76,18 @@ export class AuthService {
     return this.jwt.decodeToken(token);
   }
 
-  getToken() {
+  getAccessToken() {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      return null;
+    }
+    if (!this.tokenNotExpire(token)) {
+      return null;
+    }
+    return token;
+  }
+
+  get currentUser() {
     const token = localStorage.getItem("accessToken");
     if (!token) {
       return null;

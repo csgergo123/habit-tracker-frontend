@@ -1,4 +1,4 @@
-import { RegisterWith } from "../entities/register-with";
+import { RegisterWith } from "../entities/register-with.enum";
 
 export class CreateUserDto {
   password: string;

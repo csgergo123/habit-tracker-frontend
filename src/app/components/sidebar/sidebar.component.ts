@@ -14,6 +14,18 @@ export const ROUTES: RouteInfo[] = [
     icon: "ni-tv-2 text-primary",
     class: "",
   },
+  {
+    path: "/habits",
+    title: "Habits",
+    icon: "ni ni-calendar-grid-58 text-blue",
+    class: "",
+  },
+  {
+    path: "/todos",
+    title: "Todos",
+    icon: "ni ni-check-bold text-blue",
+    class: "",
+  },
   { path: "/icons", title: "Icons", icon: "ni-planet text-blue", class: "" },
   { path: "/maps", title: "Maps", icon: "ni-pin-3 text-orange", class: "" },
   {

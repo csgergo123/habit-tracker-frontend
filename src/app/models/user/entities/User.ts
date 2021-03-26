@@ -1,4 +1,4 @@
-import { RegisterWith } from "./register-with";
+import { RegisterWith } from "./register-with.enum";
 export class User {
   constructor(
     public id: number,
