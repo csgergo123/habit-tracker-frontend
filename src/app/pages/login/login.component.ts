@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
-import { AuthService } from "src/app/services/auth.service";
+import { AuthService } from "src/app/auth/auth.service";
 
 @Component({
   selector: "app-login",
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.authService.login(form.value).subscribe(
       (result) => {
-        this.router.navigate(["/"]);
+        this.router.navigate(["/dashboard"]);
         this.isLoading = false;
       },
       (error) => {

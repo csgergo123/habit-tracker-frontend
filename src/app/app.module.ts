@@ -9,7 +9,7 @@ import { AppComponent } from "./app.component";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
 
-import { AuthService } from "src/app/services/auth.service";
+import { AuthService } from "src/app/auth/auth.service";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { CommonModule } from "@angular/common";
@@ -17,6 +17,7 @@ import { CommonModule } from "@angular/common";
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
 import { LoadingSpinnerComponent } from "src/shared/loading-spinner/loading-spinner.component";
+import { AuthGuard } from "./layouts/admin-layout/auth.guard";
 
 @NgModule({
   imports: [

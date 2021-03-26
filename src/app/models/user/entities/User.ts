@@ -1,17 +1,19 @@
 import { RegisterWith } from "./register-with";
-
 export class User {
-  email: string;
+  constructor(
+    public id: number,
+    public email: string,
+    public firstName: string,
+    public lastName: string,
+    public phone: string,
+    private _token: string,
+    public exp: Date
+  ) {}
 
-  password: string;
-
-  firstName: string;
-
-  lastName: string | null;
-
-  phone: string | null;
-
-  registerWith: RegisterWith;
-
-  emailVerifiedAt: Date | null;
+  get token() {
+    if (!this.exp || new Date() > this.exp) {
+      return null;
+    }
+    return this._token;
+  }
 }
