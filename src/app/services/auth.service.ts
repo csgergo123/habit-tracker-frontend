@@ -1,7 +1,10 @@
+import { CreateUserDto } from "./../models/user/dto/create-user.dto";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { User } from "../models/user/entities/User";
+import { RegisterWith } from "../models/user/entities/register-with";
 
 interface AuthResponseData {
   accessToken: string;
@@ -31,5 +34,14 @@ export class AuthService {
           } else return false;
         })
       );
+  }
+
+  register(createUserDto: CreateUserDto): Observable<User> {
+    createUserDto.registerWith = RegisterWith.email;
+
+    return this.http.post<User>(
+      "http://localhost:8000/users/signUp",
+      createUserDto
+    );
   }
 }
