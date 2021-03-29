@@ -36,7 +36,6 @@ export class HabitsComponent implements OnInit {
     });
   }
 
-  
   /* Create habit */
 
   open(content) {
@@ -56,6 +55,24 @@ export class HabitsComponent implements OnInit {
       },
       (error) => {
         this.createHabitError = error.error.message;
+      }
+    );
+  }
+
+  habitDone(habitId: number) {
+    this.habitService.habitDone(habitId).subscribe(
+      (result) => {
+        console.log(result);
+        // Remove the habit from habits array by id
+        let removeIndex = this.habits
+          .map(function (habit) {
+            return habit.id;
+          })
+          .indexOf(habitId);
+        this.habits.splice(removeIndex, 1);
+      },
+      (error) => {
+        console.log("ez nem sikerült");
       }
     );
   }

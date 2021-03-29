@@ -39,7 +39,6 @@ export class HabitsService {
 
   createHabit(habit: Habit): Observable<Habit> {
     const httpOptions = this.getAuthHeader();
-    console.log("httpOptions", httpOptions);
     return this.http
       .post<Habit>("http://localhost:8000/habits", habit, httpOptions)
       .pipe(
@@ -48,5 +47,14 @@ export class HabitsService {
           return habit;
         })
       );
+  }
+
+  habitDone(habitId: number) {
+    const httpOptions = this.getAuthHeader();
+    return this.http.post(
+      `http://localhost:8000/habits/${habitId}/done`,
+      null,
+      httpOptions
+    );
   }
 }
