@@ -32,14 +32,49 @@
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <tbody>
-              <tr *ngFor="let habit of habits" class="bg">
-                <td>{{ habit.title }}</td>
+              <tr
+                *ngFor="let habit of habits"
+                class="bg bg-{{ habit.color || white }}"
+              >
+                <th scope="row">
+                  <div class="form-check media align-items-center">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="habitDone"
+                      style="width: 20px; height: 20px"
+                    />
+                  </div>
+                </th>
+                <td class="media-body">
+                  <span class="mb-0 text-sm">
+                    {{ habit.title }}
+                  </span>
+                </td>
                 <td>{{ habit.regularity }}</td>
-                <td>{{ habit.intensity }}</td>
+                <td>
+                  <span *ngIf="habit.intensity == 'weak'">
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </span>
+                  <span *ngIf="habit.intensity == 'normal'">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </span>
+                  <span *ngIf="habit.intensity == 'strong'">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </span>
+                </td>
+                <td></td>
               </tr>
             </tbody>
           </table>
         </div>
+        <!-- Paginator -->
         <div class="card-footer py-4">
           <nav aria-label="...">
             <ul class="pagination justify-content-end mb-0">
@@ -72,7 +107,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <!-- Create habit -->
