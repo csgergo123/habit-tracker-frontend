@@ -47,7 +47,7 @@
                   </div>
                 </th>
                 <td class="media-body">
-                  <span class="mb-0 text-sm">
+                  <span class="text-lg">
                     {{ habit.title }}
                   </span>
                 </td>
@@ -69,7 +69,27 @@
                     <i class="fas fa-star"></i>
                   </span>
                 </td>
-                <td></td>
+                <td class="text-right">
+                  <div ngbDropdown placement="bottom-right">
+                    <a
+                      class="btn btn-sm btn-icon-only text-light"
+                      ngbDropdownToggle
+                    >
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div
+                      ngbDropdownMenu
+                      class="dropdown-menu-right dropdown-menu-arrow"
+                    >
+                      <a class="dropdown-item" href="javascript:void(0)">
+                        Edit
+                      </a>
+                      <a class="dropdown-item" href="javascript:void(0)">
+                        Remove
+                      </a>
+                    </div>
+                  </div>
+                </td>
               </tr>
             </tbody>
           </table>
