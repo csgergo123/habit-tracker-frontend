@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { AuthService } from "src/app/auth/auth.service";
 import { Habit } from "src/app/models/habit/entities/Habit";
 
@@ -8,11 +10,7 @@ import { Habit } from "src/app/models/habit/entities/Habit";
   providedIn: "root",
 })
 export class HabitsService {
-  constructor(
-    private http: HttpClient,
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   private getAuthHeader(): {
     headers: HttpHeaders;
@@ -27,13 +25,28 @@ export class HabitsService {
     return httpOptions;
   }
 
-  fetchHabits() {
+  fetchHabits(): Observable<Habit[]> {
     const httpOptions = this.getAuthHeader();
     return this.http
-      .get("http://localhost:8000/habits", httpOptions)
-      .subscribe((habits) => {
-        console.log(habits);
-        return habits;
-      });
+      .get<Habit[]>("http://localhost:8000/habits", httpOptions)
+      .pipe(
+        map((habitsArray) => {
+          console.log(habitsArray);
+          return habitsArray;
+        })
+      );
+  }
+
+  createHabit(habit: Habit): Observable<Habit> {
+    const httpOptions = this.getAuthHeader();
+    console.log("httpOptions", httpOptions);
+    return this.http
+      .post<Habit>("http://localhost:8000/habits", habit, httpOptions)
+      .pipe(
+        map((habit) => {
+          console.log(habit);
+          return habit;
+        })
+      );
   }
 }

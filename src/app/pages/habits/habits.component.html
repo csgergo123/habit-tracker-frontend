@@ -1,1 +1,220 @@
-<p>habits works!</p>
+<!-- Loading -->
+<app-loading-spinner *ngIf="isFetching"></app-loading-spinner>
+
+<!-- No habits -->
+<div
+  class="m-auto"
+  style="width: fit-content"
+  *ngIf="habits && habits.length < 1 && !isFetching"
+>
+  <img src="../assets/img/habit/habit.png" />
+</div>
+
+<!-- Habits -->
+<app-navbar *ngIf="habits && habits.length >= 1 && !isFetching"></app-navbar>
+<div
+  class="header bg-gradient-danger pb-8 pt-5 pt-md-8"
+  *ngIf="habits && habits.length >= 1 && !isFetching"
+>
+  <div class="container-fluid"></div>
+</div>
+<div
+  class="container-fluid mt--7"
+  *ngIf="habits && habits.length >= 1 && !isFetching"
+>
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Habits</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <tbody>
+              <tr *ngFor="let habit of habits" class="bg">
+                <td>{{ habit.title }}</td>
+                <td>{{ habit.regularity }}</td>
+                <td>{{ habit.intensity }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)"
+                  >2 <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Create habit -->
+<!-- Plus Button -->
+<div class="plus-button-container">
+  <button
+    type="button"
+    class="btn btn-danger btn-circle btn-xl"
+    data-toggle="modal"
+    data-target="#addHabitModal"
+    (click)="open(content)"
+  >
+    <i class="fa fa-plus"></i>
+  </button>
+</div>
+
+<!-- Modal -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add a new habit</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm">
+      <div class="form-group">
+        <div class="row">
+          <!-- Title -->
+          <div class="col-md-12">
+            <label for="title">Title</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+          <!-- Start date -->
+          <div class="col-md-6">
+            <label for="dateOfBirth">Start date</label>
+            <div class="input-group">
+              <input
+                id="dateOfBirth"
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="date_added"
+                ngbDatepicker
+                #date_added="ngbDatepicker"
+                ngModel
+                required
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-default"
+                  (click)="date_added.toggle()"
+                  type="button"
+                >
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Intensity -->
+          <div class="col-md-6">
+            <label for="title">Intensity</label>
+            <div class="input-group">
+              <select
+                name="intensity"
+                class="form-select form-control"
+                ngModel
+                required
+              >
+                <option value="weak">Weak</option>
+                <option value="normal" selected>Normal</option>
+                <option value="strong">Strong</option>
+              </select>
+            </div>
+          </div>
+          <!-- Regularity -->
+          <div class="col-md-6">
+            <label for="title">Regularity</label>
+            <div class="input-group">
+              <select
+                name="regularity"
+                class="form-select form-control"
+                ngModel
+                required
+              >
+                <option value="daily" selected>Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+          </div>
+          <!-- Color -->
+          <div class="col-md-6">
+            <label for="title">Color</label>
+            <div class="input-group">
+              <select
+                name="color"
+                class="form-select form-control"
+                ngModel
+                required
+              >
+                <option value="lightblue" selected>Lightblue</option>
+                <option value="green">Green</option>
+                <option value="lime">Lime</option>
+                <option value="silver">Silver</option>
+                <option value="white">White</option>
+                <option value="red">Red</option>
+                <option value="purple">Purple</option>
+                <option value="yellow">Yellow</option>
+                <option value="navy">Navy</option>
+                <option value="blue">Blue</option>
+                <option value="aqua">Aqua</option>
+                <option value="fuchsia">Fuchsia</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="createHabitError" class="alert alert-danger">
+    {{ createHabitError || "All fields are required." }}
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="createHabit(f)"
+      (click)="modal.dismiss()"
+      [disabled]="!f.valid"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
