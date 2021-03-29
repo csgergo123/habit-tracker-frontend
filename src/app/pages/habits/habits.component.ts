@@ -22,7 +22,7 @@ export class HabitsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isFetching = true;
-    this.habitService.fetchHabits().subscribe((habits) => {
+    this.habitService.fetchHabitsToBeDone().subscribe((habits) => {
       this.isFetching = false;
       this.habits = habits;
     });
@@ -48,7 +48,6 @@ export class HabitsComponent implements OnInit {
       return;
     }
 
-    console.log(form.value);
     this.habitService.createHabit(form.value).subscribe(
       (result) => {
         this.habits.push(result);
@@ -72,7 +71,7 @@ export class HabitsComponent implements OnInit {
         this.habits.splice(removeIndex, 1);
       },
       (error) => {
-        console.log("ez nem sikerült");
+        console.log(`Error during make done the habit. Error: ${error}`);
       }
     );
   }

@@ -34,7 +34,8 @@
             <tbody>
               <tr
                 *ngFor="let habit of habits"
-                class="bg bg-{{ habit.color || white }}"
+                class="bg"
+                style="background-color: {{ habit.color || white }}"
               >
                 <th scope="row">
                   <div class="form-check media align-items-center">

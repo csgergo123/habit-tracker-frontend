@@ -37,6 +37,18 @@ export class HabitsService {
       );
   }
 
+  fetchHabitsToBeDone(): Observable<Habit[]> {
+    const httpOptions = this.getAuthHeader();
+    return this.http
+      .get<Habit[]>("http://localhost:8000/habits/to-be-done", httpOptions)
+      .pipe(
+        map((habitsArray) => {
+          console.log(habitsArray);
+          return habitsArray;
+        })
+      );
+  }
+
   createHabit(habit: Habit): Observable<Habit> {
     const httpOptions = this.getAuthHeader();
     return this.http
