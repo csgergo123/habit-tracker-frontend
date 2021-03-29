@@ -69,4 +69,12 @@ export class HabitsService {
       httpOptions
     );
   }
+
+  removeHabit(habitId: number) {
+    const httpOptions = this.getAuthHeader();
+    return this.http.delete(
+      `http://localhost:8000/habits/${habitId}`,
+      httpOptions
+    );
+  }
 }

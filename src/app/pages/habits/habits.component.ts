@@ -75,4 +75,22 @@ export class HabitsComponent implements OnInit {
       }
     );
   }
+
+  removeHabit(habitId: number) {
+    this.habitService.removeHabit(habitId).subscribe(
+      (result) => {
+        console.log(result);
+        // Remove the habit from habits array by id
+        let removeIndex = this.habits
+          .map(function (habit) {
+            return habit.id;
+          })
+          .indexOf(habitId);
+        this.habits.splice(removeIndex, 1);
+      },
+      (error) => {
+        console.log(`Error during remove the habit. Error: ${error}`);
+      }
+    );
+  }
 }
