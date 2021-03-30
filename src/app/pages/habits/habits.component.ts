@@ -14,6 +14,7 @@ export class HabitsComponent implements OnInit {
   private habits: Habit[];
   isFetching = false;
   createHabitError = "";
+  color: string;
 
   constructor(
     private habitService: HabitsService,

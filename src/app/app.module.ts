@@ -17,6 +17,7 @@ import { CommonModule } from "@angular/common";
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
 import { HabitsComponent } from "./pages/habits/habits.component";
+import { ColorPickerModule } from "ngx-color-picker";
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { HabitsComponent } from "./pages/habits/habits.component";
     RouterModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    ColorPickerModule,
   ],
   declarations: [
     AppComponent,

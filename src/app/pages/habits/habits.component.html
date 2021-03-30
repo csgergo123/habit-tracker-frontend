@@ -234,25 +234,26 @@
           <div class="col-md-6">
             <label for="title">Color</label>
             <div class="input-group">
-              <select
+              <input
+                class="form-control"
                 name="color"
-                class="form-select form-control"
-                ngModel
-                required
-              >
-                <option value="lightblue" selected>Lightblue</option>
-                <option value="green">Green</option>
-                <option value="lime">Lime</option>
-                <option value="silver">Silver</option>
-                <option value="white">White</option>
-                <option value="red">Red</option>
-                <option value="purple">Purple</option>
-                <option value="yellow">Yellow</option>
-                <option value="navy">Navy</option>
-                <option value="blue">Blue</option>
-                <option value="aqua">Aqua</option>
-                <option value="fuchsia">Fuchsia</option>
-              </select>
+                [(ngModel)]="color"
+                [(colorPicker)]="color"
+                [style.background]="color"
+                [value]="color"
+                [cpOutputFormat]="'rgba'"
+                [(cpToggle)]="toggle"
+                #colorPicker
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-default"
+                  (click)="toggle = !toggle"
+                  type="button"
+                >
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
