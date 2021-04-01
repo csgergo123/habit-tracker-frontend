@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { AuthService } from "src/app/auth/auth.service";
 import { Habit } from "src/app/models/habit/entities/Habit";
+import { environment as env } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -27,22 +28,20 @@ export class HabitsService {
 
   fetchHabits(): Observable<Habit[]> {
     const httpOptions = this.getAuthHeader();
-    return this.http
-      .get<Habit[]>("http://localhost:8000/habits", httpOptions)
-      .pipe(
-        map((habits: Habit[]) => {
-          habits.map((habit) => {
-            habit.lightOrDark = this.lightOrDark(habit.color);
-          });
-          return habits;
-        })
-      );
+    return this.http.get<Habit[]>(`${env.backendUrl}/habits`, httpOptions).pipe(
+      map((habits: Habit[]) => {
+        habits.map((habit) => {
+          habit.lightOrDark = this.lightOrDark(habit.color);
+        });
+        return habits;
+      })
+    );
   }
 
   fetchHabitsToBeDone(): Observable<Habit[]> {
     const httpOptions = this.getAuthHeader();
     return this.http
-      .get<Habit[]>("http://localhost:8000/habits/to-be-done", httpOptions)
+      .get<Habit[]>(`${env.backendUrl}/habits/to-be-done`, httpOptions)
       .pipe(
         map((habits: Habit[]) => {
           habits.map((habit) => {
@@ -56,7 +55,7 @@ export class HabitsService {
   createHabit(habit: Habit): Observable<Habit> {
     const httpOptions = this.getAuthHeader();
     return this.http
-      .post<Habit>("http://localhost:8000/habits", habit, httpOptions)
+      .post<Habit>(`${env.backendUrl}/habits`, habit, httpOptions)
       .pipe(
         map((habit) => {
           console.log(habit);
@@ -68,7 +67,7 @@ export class HabitsService {
   habitDone(habitId: number) {
     const httpOptions = this.getAuthHeader();
     return this.http.post(
-      `http://localhost:8000/habits/${habitId}/done`,
+      `${env.backendUrl}/habits/${habitId}/done`,
       null,
       httpOptions
     );
@@ -76,10 +75,7 @@ export class HabitsService {
 
   removeHabit(habitId: number) {
     const httpOptions = this.getAuthHeader();
-    return this.http.delete(
-      `http://localhost:8000/habits/${habitId}`,
-      httpOptions
-    );
+    return this.http.delete(`${env.backendUrl}/habits/${habitId}`, httpOptions);
   }
 
   private lightOrDark(color) {

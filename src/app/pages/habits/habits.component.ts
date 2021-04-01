@@ -26,6 +26,7 @@ export class HabitsComponent implements OnInit {
     this.habitService.fetchHabitsToBeDone().subscribe((habits) => {
       this.isFetching = false;
       this.habits = habits;
+      console.log("habits", habits);
     });
   }
 
