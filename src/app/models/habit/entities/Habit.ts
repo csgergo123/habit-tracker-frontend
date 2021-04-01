@@ -11,4 +11,6 @@ export class Habit {
   intensity: Intensity;
 
   color: string | null;
+
+  lightOrDark: 'light' | 'dark';
 }

@@ -35,7 +35,8 @@
               <tr
                 *ngFor="let habit of habits"
                 class="bg"
-                style="background-color: {{ habit.color || white }}"
+                [style.backgroundColor]="habit.color || white"
+                [style.color]="habit.lightOrDark == 'dark' ? 'white' : 'black'"
               >
                 <th scope="row">
                   <div class="form-check media align-items-center">
