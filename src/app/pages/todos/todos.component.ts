@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 import { Todo } from "src/app/models/todo/entities/Todo";
 import { TodosService } from "./todos.service";
@@ -72,7 +73,24 @@ export class TodosComponent implements OnInit {
     return false;
   }
 
-  todoDone(todoId: number) {
+  todoDoneHelper(todoId: number) {
+    Swal.fire({
+      title: "Did you complete this todo?",
+      text: "This sets the todo done.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Yes, I did it!",
+      cancelButtonText: "No, I didn't do it.",
+    }).then((result) => {
+      if (result.value) {
+        this.todoDone(todoId);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // TODO uncheck the checkbox
+      }
+    });
+  }
+
+  private todoDone(todoId: number) {
     this.todoService.todoDone(todoId).subscribe(
       (result) => {
         console.log(result);
@@ -106,5 +124,9 @@ export class TodosComponent implements OnInit {
         console.log(`Error during remove the todo. Error: ${error}`);
       }
     );
+  }
+
+  isExpired(todo: Todo): boolean {
+    return new Date(todo.issueDate).getDate() < new Date().getDate();
   }
 }
