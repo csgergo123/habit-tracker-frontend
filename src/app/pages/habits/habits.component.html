@@ -44,8 +44,7 @@
               <tr
                 *ngFor="let habit of habits; index as i"
                 class="bg"
-                [style.backgroundColor]="habit.color || white"
-                [style.color]="habit.lightOrDark == 'dark' ? 'white' : 'black'"
+                style="border-left: 15px solid {{ habit.color || black }}"
               >
                 <th scope="row">
                   <div class="form-check media align-items-center">
