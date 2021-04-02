@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 import { Habit } from "src/app/models/habit/entities/Habit";
 import { HabitsService } from "./habits.service";
@@ -72,7 +73,24 @@ export class HabitsComponent implements OnInit {
     return false;
   }
 
-  habitDone(habitId: number) {
+  habitDoneHelper(habitId: number) {
+    Swal.fire({
+      title: "Did you done this habit?",
+      text: "This set the habit done for today.",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Yes, I did it!",
+      cancelButtonText: "No, I didn't do it.",
+    }).then((result) => {
+      if (result.value) {
+        this.habitDone(habitId);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // TODO uncheck the checkbox
+      }
+    });
+  }
+
+  private habitDone(habitId: number) {
     this.habitService.habitDone(habitId).subscribe(
       (result) => {
         console.log(result);
