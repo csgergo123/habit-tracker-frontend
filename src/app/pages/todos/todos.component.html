@@ -62,9 +62,16 @@
                   </span>
                 </td>
                 <td>
-                  <span class="badge badge-dot mr-4">
+                  <span
+                    class="badge badge-dot mr-4"
+                    [class.text-danger]="isExpired(todo)"
+                  >
                     {{ todo.issueDate }}
                   </span>
+                  <i
+                    class="fas fa-exclamation-circle"
+                    *ngIf="isExpired(todo)"
+                  ></i>
                 </td>
                 <td class="text-right">
                   <div
