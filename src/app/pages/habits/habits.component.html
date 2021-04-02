@@ -63,33 +63,36 @@
                   </span>
                 </td>
                 <td>
-                  <span class="badge badge-dot mr-4">
-                    <i
-                      *ngIf="habit.regularity == 'daily'"
-                      class="bg-success"
-                    ></i>
-                    <i
-                      *ngIf="habit.regularity == 'weekly'"
-                      class="bg-warning"
-                    ></i>
-                    {{ habit.regularity }}
-                  </span>
+                  <i
+                    *ngIf="habit.regularity == 'daily'"
+                    class="fas fa-calendar-day"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Daily"
+                  ></i>
+                  <i
+                    *ngIf="habit.regularity == 'weekly'"
+                    class="fas fa-calendar-week"
+                    data-toggle="tooltip"
+                    data-placement="right"
+                    title="Weekly"
+                  ></i>
                 </td>
                 <td>
                   <span *ngIf="habit.intensity == 'weak'">
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
+                    <i class="fas fa-star text-primary"></i>
+                    <i class="far fa-star text-primary"></i>
+                    <i class="far fa-star text-primary"></i>
                   </span>
                   <span *ngIf="habit.intensity == 'normal'">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
+                    <i class="fas fa-star text-primary"></i>
+                    <i class="fas fa-star text-primary"></i>
+                    <i class="far fa-star text-primary"></i>
                   </span>
                   <span *ngIf="habit.intensity == 'hard'">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star text-primary"></i>
+                    <i class="fas fa-star text-primary"></i>
+                    <i class="fas fa-star text-primary"></i>
                   </span>
                 </td>
                 <td class="text-right">
