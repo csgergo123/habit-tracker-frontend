@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { Habit } from "src/app/models/habit/entities/Habit";
 
+import { Habit } from "src/app/models/habit/entities/Habit";
 import { HabitsService } from "./habits.service";
 
 @Component({
@@ -26,7 +26,6 @@ export class HabitsComponent implements OnInit {
     this.habitService.fetchHabitsToBeDone().subscribe((habits) => {
       this.isFetching = false;
       this.habits = habits;
-      console.log("habits", habits);
     });
   }
 
@@ -50,14 +49,27 @@ export class HabitsComponent implements OnInit {
       return;
     }
 
+    // Format date from object to string
+    form.value.startDate = this.habitService.formatDate(form.value.startDate);
+
     this.habitService.createHabit(form.value).subscribe(
-      (result) => {
-        this.habits.push(result);
+      (habit) => {
+        // If the new habit is after today, don't need to show it
+        const habitStartDate = new Date(habit.startDate);
+        const today = new Date();
+        if (habitStartDate <= today) {
+          this.habits.push(habit);
+        }
       },
       (error) => {
         this.createHabitError = error.error.message;
       }
     );
+
+    if (!this.createHabitError) {
+      return true;
+    }
+    return false;
   }
 
   habitDone(habitId: number) {
