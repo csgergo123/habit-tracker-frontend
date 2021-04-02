@@ -73,7 +73,7 @@ export class TodosComponent implements OnInit {
     return false;
   }
 
-  todoDoneHelper(todoId: number) {
+  todoDoneHelper(todoId: number, event) {
     Swal.fire({
       title: "Did you complete this todo?",
       text: "This sets the todo done.",
@@ -85,7 +85,7 @@ export class TodosComponent implements OnInit {
       if (result.value) {
         this.todoDone(todoId);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        // TODO uncheck the checkbox
+        event.target.checked = false;
       }
     });
   }

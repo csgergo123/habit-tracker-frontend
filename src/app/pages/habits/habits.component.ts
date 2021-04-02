@@ -73,7 +73,7 @@ export class HabitsComponent implements OnInit {
     return false;
   }
 
-  habitDoneHelper(habitId: number) {
+  habitDoneHelper(habitId: number, event) {
     Swal.fire({
       title: "Did you done this habit?",
       text: "This sets the habit done for today.",
@@ -85,7 +85,7 @@ export class HabitsComponent implements OnInit {
       if (result.value) {
         this.habitDone(habitId);
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        // TODO uncheck the checkbox
+        event.target.checked = false;
       }
     });
   }
