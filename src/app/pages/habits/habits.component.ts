@@ -108,7 +108,22 @@ export class HabitsComponent implements OnInit {
     );
   }
 
-  removeHabit(habitId: number) {
+  removeHabitHelper(habitId: number) {
+    Swal.fire({
+      title: "Do you want to remove this habit?",
+      text: "This operation is not reversible.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, remove it!",
+      cancelButtonText: "No, I want to keep it.",
+    }).then((result) => {
+      if (result.value) {
+        this.removeHabit(habitId);
+      }
+    });
+  }
+
+  private removeHabit(habitId: number) {
     this.habitService.removeHabit(habitId).subscribe(
       (result) => {
         console.log(result);

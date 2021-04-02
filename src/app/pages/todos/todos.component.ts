@@ -108,7 +108,22 @@ export class TodosComponent implements OnInit {
     );
   }
 
-  removeTodo(todoId: number) {
+  removeTodoHelper(todoId: number) {
+    Swal.fire({
+      title: "Do you want to remove this todo?",
+      text: "This operation is not reversible.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, remove it!",
+      cancelButtonText: "No, I want to keep it.",
+    }).then((result) => {
+      if (result.value) {
+        this.removeTodo(todoId);
+      }
+    });
+  }
+
+  private removeTodo(todoId: number) {
     this.todoService.removeTodo(todoId).subscribe(
       (result) => {
         console.log(result);

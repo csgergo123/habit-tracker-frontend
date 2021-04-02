@@ -94,7 +94,10 @@
                       <a class="dropdown-item" (click)="editTodo(todo.id)">
                         Edit
                       </a>
-                      <a class="dropdown-item" (click)="removeTodo(todo.id)">
+                      <a
+                        class="dropdown-item"
+                        (click)="removeTodoHelper(todo.id)"
+                      >
                         Remove
                       </a>
                     </div>
