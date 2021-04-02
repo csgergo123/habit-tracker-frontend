@@ -76,7 +76,7 @@ export class HabitsComponent implements OnInit {
   habitDoneHelper(habitId: number) {
     Swal.fire({
       title: "Did you done this habit?",
-      text: "This set the habit done for today.",
+      text: "This sets the habit done for today.",
       icon: "question",
       showCancelButton: true,
       confirmButtonText: "Yes, I did it!",
