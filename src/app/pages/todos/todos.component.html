@@ -10,8 +10,9 @@
   <img width="50%" src="../assets/img/todo/todo.png" />
 </div>
 
+<app-navbar></app-navbar>
+
 <!-- Todos -->
-<app-navbar *ngIf="todos && todos.length >= 1 && !isFetching"></app-navbar>
 <div
   class="header bg-gradient-danger pb-8 pt-5 pt-md-8"
   *ngIf="todos && todos.length >= 1 && !isFetching"
