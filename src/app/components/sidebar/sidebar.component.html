@@ -154,6 +154,14 @@
       </ul>
       <!-- Divider -->
       <hr class="my-3" />
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="/" class="nav-link" (click)="this.authService.logout()">
+            <i class="fas fa-sign-out-alt"></i>
+            Sign out
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
