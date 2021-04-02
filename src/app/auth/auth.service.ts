@@ -49,6 +49,10 @@ export class AuthService {
     );
   }
 
+  logout() {
+    localStorage.removeItem("accessToken");
+  }
+
   private handleAuthentication(accessToken: string) {
     const decodedJwt = this.jwt.decodeToken(accessToken);
     const expirationDate = new Date(+decodedJwt.exp);
