@@ -43,8 +43,7 @@
               <tr
                 *ngFor="let todo of todos; index as i"
                 class="bg"
-                [style.backgroundColor]="todo.color || white"
-                [style.color]="todo.lightOrDark == 'dark' ? 'white' : 'black'"
+                style="border-left: 15px solid {{ todo.color || black }}"
               >
                 <th scope="row">
                   <div class="form-check media align-items-center">
