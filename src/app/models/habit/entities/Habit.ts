@@ -10,7 +10,9 @@ export class Habit {
 
   intensity: Intensity;
 
-  color: string | null;
+  color: string;
 
-  lightOrDark: 'light' | 'dark';
+  startDate: string;
+
+  dateAdded: string;
 }
