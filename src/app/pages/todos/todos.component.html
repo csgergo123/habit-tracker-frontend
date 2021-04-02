@@ -1,0 +1,246 @@
+<!-- Loading -->
+<app-loading-spinner *ngIf="isFetching"></app-loading-spinner>
+
+<!-- No todos -->
+<div
+  class="m-auto"
+  style="width: fit-content; text-align: center"
+  *ngIf="todos && todos.length < 1 && !isFetching"
+>
+  <img width="50%" src="../assets/img/todo/todo.png" />
+</div>
+
+<!-- Todos -->
+<app-navbar *ngIf="todos && todos.length >= 1 && !isFetching"></app-navbar>
+<div
+  class="header bg-gradient-danger pb-8 pt-5 pt-md-8"
+  *ngIf="todos && todos.length >= 1 && !isFetching"
+>
+  <div class="container-fluid"></div>
+</div>
+<div
+  class="container-fluid mt--7"
+  *ngIf="todos && todos.length >= 1 && !isFetching"
+>
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Todos</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Done</th>
+                <th scope="col">Name</th>
+                <th scope="col">Issue date</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let todo of todos; index as i"
+                class="bg"
+                [style.backgroundColor]="todo.color || white"
+                [style.color]="todo.lightOrDark == 'dark' ? 'white' : 'black'"
+              >
+                <th scope="row">
+                  <div class="form-check media align-items-center">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="todoDone"
+                      style="width: 20px; height: 20px"
+                      (click)="todoDone(todo.id)"
+                    />
+                  </div>
+                </th>
+                <td class="media-body">
+                  <span class="font-weight-bold">
+                    {{ todo.title }}
+                  </span>
+                </td>
+                <td>
+                  <span class="badge badge-dot mr-4">
+                    {{ todo.issueDate }}
+                  </span>
+                </td>
+                <td class="text-right">
+                  <div
+                    ngbDropdown
+                    placement="{{
+                      i < todos.length / 2 ? 'bottom-right' : 'top-right'
+                    }}"
+                  >
+                    <a
+                      class="btn btn-sm btn-icon-only text-light"
+                      ngbDropdownToggle
+                    >
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div
+                      ngbDropdownMenu
+                      class="dropdown-menu-right dropdown-menu-arrow"
+                    >
+                      <a class="dropdown-item" (click)="editTodo(todo.id)">
+                        Edit
+                      </a>
+                      <a class="dropdown-item" (click)="removeTodo(todo.id)">
+                        Remove
+                      </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Paginator -->
+        <!-- <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)"
+                  >2 <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Create todo -->
+<!-- Plus Button -->
+<div class="plus-button-container">
+  <button
+    type="button"
+    class="btn btn-danger btn-circle btn-xl"
+    data-toggle="modal"
+    data-target="#addTodoModal"
+    (click)="open(content)"
+  >
+    <i class="fa fa-plus"></i>
+  </button>
+</div>
+
+<!-- Modal -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add a new todo</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm">
+      <div class="form-group">
+        <div class="row">
+          <!-- Title -->
+          <div class="col-md-12">
+            <label for="title">Title</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                ngModel
+                required
+              />
+            </div>
+          </div>
+          <!-- Start date -->
+          <div class="col-md-6">
+            <label for="issueDate">Issue date</label>
+            <div class="input-group">
+              <input
+                id="issueDate"
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="issueDate"
+                ngbDatepicker
+                #date_added="ngbDatepicker"
+                ngModel
+                required
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-default"
+                  (click)="date_added.toggle()"
+                  type="button"
+                >
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Color -->
+          <div class="col-md-6">
+            <label for="title">Color</label>
+            <div class="input-group">
+              <input
+                class="form-control"
+                name="color"
+                [(ngModel)]="color"
+                [(colorPicker)]="color"
+                [style.background]="color"
+                [value]="color"
+                [cpOutputFormat]="'rgba'"
+                [(cpToggle)]="toggle"
+                #colorPicker
+                required
+              />
+              <div class="input-group-append">
+                <button
+                  class="btn btn-default"
+                  (click)="toggle = !toggle"
+                  type="button"
+                >
+                  <i class="fas fa-palette"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="createTodoError" class="alert alert-danger">
+    {{ createTodoError || "All fields are required." }}
+  </div>
+  <div class="modal-footer">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="createTodo(f) == true ? modal.dismiss() : ''"
+      [disabled]="!f.valid"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
