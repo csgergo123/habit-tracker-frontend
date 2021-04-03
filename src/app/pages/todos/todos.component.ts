@@ -142,6 +142,12 @@ export class TodosComponent implements OnInit {
   }
 
   isExpired(todo: Todo): boolean {
-    return new Date(todo.issueDate).getDate() < new Date().getDate();
+    const todoIssueDate = new Date(todo.issueDate);
+    const today = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate()
+    );
+    return todoIssueDate < today;
   }
 }
