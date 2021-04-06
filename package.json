@@ -1,6 +1,10 @@
 {
   "name": "habit-tracker-frontend",
   "version": "0.1.0",
+  "engines": {
+    "node": "15.x",
+    "npm": "7.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
