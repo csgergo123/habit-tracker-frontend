@@ -7,6 +7,7 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 
 import { User } from "../models/user/entities/User";
 import { RegisterWith } from "../models/user/entities/register-with.enum";
+import { environment as env } from "src/environments/environment";
 
 interface AuthResponseData {
   accessToken: string;
@@ -26,7 +27,7 @@ export class AuthService {
 
   login(credentials: AuthCredentials): Observable<Promise<boolean>> {
     return this.http
-      .post<AuthResponseData>("http://localhost:8000/users/signIn", credentials)
+      .post<AuthResponseData>(`${env.backendUrl}/users/signIn`, credentials)
       .pipe(
         map(async (response) => {
           if (response && response.accessToken) {
@@ -44,7 +45,7 @@ export class AuthService {
     createUserDto.registerWith = RegisterWith.email;
 
     return this.http.post<User>(
-      "http://localhost:8000/users/signUp",
+      `${env.backendUrl}/users/signUp`,
       createUserDto
     );
   }
