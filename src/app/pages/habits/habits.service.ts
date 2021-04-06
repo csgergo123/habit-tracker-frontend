@@ -64,6 +64,22 @@ export class HabitsService {
     return this.http.delete(`${env.backendUrl}/habits/${habitId}`, httpOptions);
   }
 
+  getDailyHabitDonesForThisWeek() {
+    const httpOptions = this.getAuthHeader();
+    return this.http.get<[]>(
+      `${env.backendUrl}/habit-dones/daily/last-week`,
+      httpOptions
+    );
+  }
+
+  getWeeklyHabitDonesForThisMonth() {
+    const httpOptions = this.getAuthHeader();
+    return this.http.get<[]>(
+      `${env.backendUrl}/habit-dones/daily/last-week`,
+      httpOptions
+    );
+  }
+
   formatDate(date: NgbDateStruct | null): string {
     return date ? date.year + "-" + date.month + "-" + date.day : "";
   }
