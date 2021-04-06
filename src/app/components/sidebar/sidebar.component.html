@@ -17,6 +17,7 @@
       class="navbar-brand pt-0"
       routerLinkActive="active"
       [routerLink]="['/dashboard']"
+      style="max-width: 220px"
     >
       <img
         src="./assets/img/logo/logo-removebackground.png"
@@ -27,25 +28,12 @@
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
       <li class="nav-item" ngbDropdown placement="bottom-right">
-        <a class="nav-link nav-link-icon" role="button" ngbDropdownToggle>
-          <i class="ni ni-bell-55"></i>
-        </a>
-        <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
-          <a class="dropdown-item" href="javascript:void(0)">Action</a>
-          <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="javascript:void(0)"
-            >Something else here</a
-          >
-        </div>
-      </li>
-      <li class="nav-item" ngbDropdown placement="bottom-right">
         <a class="nav-link" role="button" ngbDropdownToggle>
           <div class="media align-items-center">
             <span class="avatar avatar-sm rounded-circle">
               <img
                 alt="Image placeholder"
-                src="./assets/img/theme/team-1-800x800.jpg"
+                src="./assets/img/profile/Csipkes_Gergo_negyzet.jpg"
               />
             </span>
           </div>
@@ -105,7 +93,9 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a routerLinkActive="active" [routerLink]="['/dashboard']">
-              <img src="./assets/img/brand/blue.png" />
+              <img
+                src="./assets/img/logo/blue_logo_removebackground_black.png"
+              />
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -120,22 +110,6 @@
           </div>
         </div>
       </div>
-      <!-- Form -->
-      <form class="mt-4 mb-3 d-md-none">
-        <div class="input-group input-group-rounded input-group-merge">
-          <input
-            type="search"
-            class="form-control form-control-rounded form-control-prepended"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <span class="fa fa-search"></span>
-            </div>
-          </div>
-        </div>
-      </form>
       <!-- Navigation -->
       <ul class="navbar-nav">
         <li
