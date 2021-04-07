@@ -1,15 +1,23 @@
+.img-at-middle {
+  height: calc(100vh - 76px);
+}
+
 @media screen and (min-width: 768px) {
   html:not(.auth-layout) .main-content {
-      margin-left: $navbar-vertical-width;
+    margin-left: $navbar-vertical-width;
+  }
+
+  .img-at-middle {
+    height: 100vh;
   }
 }
 
-.fixed-right{
-  .navbar-vertical.navbar-expand-md{
+.fixed-right {
+  .navbar-vertical.navbar-expand-md {
     right: 0;
     border-width: 0 0 0 1px;
   }
-   .main-content {
+  .main-content {
     margin-right: $navbar-vertical-width;
     margin-left: 0;
   }

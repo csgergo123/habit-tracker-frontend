@@ -3,11 +3,10 @@
 
 <!-- No todos -->
 <div
-  class="m-auto"
-  style="width: fit-content; text-align: center"
+  class="m-auto align-items-center d-flex justify-content-center img-at-middle"
   *ngIf="todos && todos.length < 1 && !isFetching"
 >
-  <img width="50%" src="../assets/img/todo/todo.png" />
+  <img width="50%" style="max-width: 460px" src="../assets/img/todo/todo.png" />
 </div>
 
 <app-navbar></app-navbar>

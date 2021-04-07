@@ -3,14 +3,18 @@
 
 <!-- No habits -->
 <div
-  class="m-auto"
-  style="width: fit-content"
+  class="m-auto align-items-center d-flex justify-content-center img-at-middle"
   *ngIf="habits && habits.length < 1 && !isFetching"
 >
-  <img src="../assets/img/habit/habit.png" />
+  <img
+    width="50%"
+    style="max-width: 460px"
+    src="../assets/img/habit/habit.png"
+  />
 </div>
 
 <app-navbar></app-navbar>
+
 <!-- Habits -->
 <div
   class="header bg-gradient-danger pb-8 pt-5 pt-md-8"
