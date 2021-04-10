@@ -6,7 +6,12 @@
   class="m-auto align-items-center d-flex justify-content-center img-at-middle"
   *ngIf="todos && todos.length < 1 && !isFetching"
 >
-  <img width="50%" style="max-width: 460px" src="../assets/img/todo/todo.png" />
+  <img
+    id="todo-img"
+    width="50%"
+    style="max-width: 460px"
+    src="../assets/img/todo/todo.png"
+  />
 </div>
 
 <app-navbar></app-navbar>
@@ -30,7 +35,7 @@
           <h3 class="mb-0">Todos</h3>
         </div>
         <div class="table-responsive">
-          <table class="table align-items-center table-hover">
+          <table id="todos-table" class="table align-items-center table-hover">
             <thead>
               <tr>
                 <th scope="col">Done</th>
@@ -74,33 +79,16 @@
                   ></i>
                 </td>
                 <td class="text-right">
-                  <div
-                    ngbDropdown
-                    placement="{{
-                      i < todos.length / 2 ? 'bottom-right' : 'top-right'
-                    }}"
+                  <!-- <a id="todo-edit" class="p-1" (click)="editTodo(todo.id)">
+                    <i class="fas fa-edit"></i>
+                  </a> -->
+                  <a
+                    id="todo-remove"
+                    class="p-1"
+                    (click)="removeTodoHelper(todo.id)"
                   >
-                    <a
-                      class="btn btn-sm btn-icon-only text-light"
-                      ngbDropdownToggle
-                    >
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div
-                      ngbDropdownMenu
-                      class="dropdown-menu-right dropdown-menu-arrow"
-                    >
-                      <a class="dropdown-item" (click)="editTodo(todo.id)">
-                        Edit
-                      </a>
-                      <a
-                        class="dropdown-item"
-                        (click)="removeTodoHelper(todo.id)"
-                      >
-                        Remove
-                      </a>
-                    </div>
-                  </div>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
                 </td>
               </tr>
             </tbody>
@@ -145,6 +133,7 @@
 <!-- Plus Button -->
 <div class="plus-button-container">
   <button
+    id="create-todo-button"
     type="button"
     class="btn btn-danger btn-circle btn-xl"
     data-toggle="modal"
@@ -246,6 +235,7 @@
   </div>
   <div class="modal-footer">
     <button
+      id="save-todo"
       type="submit"
       class="btn btn-primary"
       (click)="createTodo(f) == true ? modal.dismiss() : ''"

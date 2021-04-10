@@ -101,41 +101,16 @@
                   </span>
                 </td>
                 <td class="text-right">
-                  <div
-                    ngbDropdown
-                    placement="{{
-                      i > habits.length / 2 || habits.length == 1
-                        ? 'top-right'
-                        : 'bottom-right'
-                    }}"
+                  <!-- <a id="habit-edit" class="p-1" (click)="editHabit(habit.id)">
+                    <i class="fas fa-edit"></i>
+                  </a> -->
+                  <a
+                    id="habit-remove"
+                    class="p-1"
+                    (click)="removeHabitHelper(habit.id)"
                   >
-                    <a
-                      id="habit-edit-remove-dropdown"
-                      class="btn btn-sm btn-icon-only text-light"
-                      ngbDropdownToggle
-                    >
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div
-                      ngbDropdownMenu
-                      class="dropdown-menu-right dropdown-menu-arrow"
-                    >
-                      <a
-                        id="habit-edit"
-                        class="dropdown-item"
-                        (click)="editHabit(habit.id)"
-                      >
-                        Edit
-                      </a>
-                      <a
-                        id="habit-remove"
-                        class="dropdown-item"
-                        (click)="removeHabitHelper(habit.id)"
-                      >
-                        Remove
-                      </a>
-                    </div>
-                  </div>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </a>
                 </td>
               </tr>
             </tbody>
