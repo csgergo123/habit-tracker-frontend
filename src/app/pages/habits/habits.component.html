@@ -7,6 +7,7 @@
   *ngIf="habits && habits.length < 1 && !isFetching"
 >
   <img
+    id="habit-img"
     width="50%"
     style="max-width: 460px"
     src="../assets/img/habit/habit.png"
@@ -34,7 +35,7 @@
           <h3 class="mb-0">Habits</h3>
         </div>
         <div class="table-responsive">
-          <table class="table align-items-center table-hover">
+          <table id="habits-table" class="table align-items-center table-hover">
             <thead>
               <tr>
                 <th scope="col">Done</th>
@@ -109,6 +110,7 @@
                     }}"
                   >
                     <a
+                      id="habit-edit-remove-dropdown"
                       class="btn btn-sm btn-icon-only text-light"
                       ngbDropdownToggle
                     >
@@ -118,10 +120,15 @@
                       ngbDropdownMenu
                       class="dropdown-menu-right dropdown-menu-arrow"
                     >
-                      <a class="dropdown-item" (click)="editHabit(habit.id)">
+                      <a
+                        id="habit-edit"
+                        class="dropdown-item"
+                        (click)="editHabit(habit.id)"
+                      >
                         Edit
                       </a>
                       <a
+                        id="habit-remove"
                         class="dropdown-item"
                         (click)="removeHabitHelper(habit.id)"
                       >
@@ -173,6 +180,7 @@
 <!-- Plus Button -->
 <div class="plus-button-container">
   <button
+    id="create-habit-button"
     type="button"
     class="btn btn-danger btn-circle btn-xl"
     data-toggle="modal"
@@ -305,6 +313,7 @@
   </div>
   <div class="modal-footer">
     <button
+      id="save-habit"
       type="submit"
       class="btn btn-primary"
       (click)="createHabit(f) == true ? modal.dismiss() : ''"

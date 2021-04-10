@@ -47,6 +47,7 @@ export class HabitsComponent implements OnInit {
   createHabit(form: NgForm) {
     // stop here if form is invalid
     if (!form.valid || form.invalid) {
+      this.createHabitError = "All fields are required.";
       return;
     }
 
