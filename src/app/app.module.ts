@@ -18,7 +18,7 @@ import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
 import { HabitsComponent } from "./pages/habits/habits.component";
 import { ColorPickerModule } from "ngx-color-picker";
-import { TodosComponent } from './pages/todos/todos.component';
+import { TodosComponent } from "./pages/todos/todos.component";
 
 @NgModule({
   imports: [
@@ -33,13 +33,7 @@ import { TodosComponent } from './pages/todos/todos.component';
     AppRoutingModule,
     ColorPickerModule,
   ],
-  declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-    AuthLayoutComponent,
-    HabitsComponent,
-    TodosComponent,
-  ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [AuthService],
   bootstrap: [AppComponent],
 })
