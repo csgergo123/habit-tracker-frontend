@@ -2,7 +2,7 @@ import { browser, by, element } from "protractor";
 
 export class HabitsPage {
   navigateTo() {
-    return browser.get(`${browser.baseUrl}/habits`) as Promise<any>;
+    return browser.get(`${browser.baseUrl}habits`) as Promise<any>;
   }
 
   getTitleText() {

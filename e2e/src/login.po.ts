@@ -11,7 +11,7 @@ export class LoginPage {
   }
 
   navigateToHabits() {
-    return browser.get(`${browser.baseUrl}/habits`) as Promise<any>;
+    return browser.get(`${browser.baseUrl}habits`) as Promise<any>;
   }
 
   getUrl() {

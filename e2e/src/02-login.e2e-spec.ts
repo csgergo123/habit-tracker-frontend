@@ -26,12 +26,12 @@ describe("Habit tracker - Login page", () => {
   it('when user trying to login with wrong credentials he/she should stay on "login" page and see error notification', () => {
     page.navigateTo();
     page.fillCredentials(wrongCredentials);
-    expect(page.getErrorMessage()).toBe(true);
+    expect(page.getErrorMessage()).toBeTruthy();
   });
 
   it("when login is successful he/she should redirect to dashboard and the sidebar is appears", () => {
     page.navigateTo();
     page.fillCredentials(goodCredentials);
-    expect(page.getNavbarImg()).toBe(true);
+    expect(page.getNavbarImg()).toBeTruthy();
   });
 });
