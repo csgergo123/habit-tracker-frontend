@@ -18,7 +18,6 @@ export class HabitsPage {
     element(by.name("color")).sendKeys("rgb(193,243,35)");
     element(by.className("modal-footer")).click();
     element(by.id("save-habit")).click();
-    browser.sleep(1000);
   }
 
   isHabitTableAppear() {
@@ -36,7 +35,6 @@ export class HabitsPage {
   }
 
   removeHabit() {
-    element(by.id("habit-edit-remove-dropdown")).click();
     element(by.id("habit-remove")).click();
     element(by.className("swal2-confirm")).click();
     return;
