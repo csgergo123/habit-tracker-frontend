@@ -1,4 +1,3 @@
-import { browser } from "protractor";
 import { HabitsPage } from "./habits.po";
 
 describe("Habit tracker - Habits page", () => {

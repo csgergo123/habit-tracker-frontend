@@ -1,19 +1,34 @@
 import { browser } from "protractor";
-import { ProfilePage } from "./profile.po";
+import { DashboardPage } from "./dashboard.po";
 
-describe("Habit tracker - Profile", () => {
-  let profilePage: ProfilePage;
+describe("Habit tracker - Dashboard", () => {
+  let dashboardPage: DashboardPage;
 
   beforeEach(() => {
-    profilePage = new ProfilePage();
+    dashboardPage = new DashboardPage();
   });
 
-  it("should access to profile page", () => {
-    profilePage.navigateTo();
-    expect(profilePage.getHeaderText()).toContain("Hello");
+  it("should access to Dashboard page", () => {
+    dashboardPage.navigateTo();
+    expect(dashboardPage.getTitleText()).toEqual("DASHBOARD");
   });
 
-  it("should read profle properties", () => {
-    expect(profilePage.getEmail()).length > 0;
+  it("should all habit number more than 0", () => {
+    ((expect(dashboardPage.getAllNumberOfHabitsForToday()) as any) as number) > 0;
+  });
+
+  it("should habit to do number is 0", () => {
+    // Cast Promise<string> to number
+    ((expect(dashboardPage.getNumberOfHabitsToDo()) as any) as number) == 0;
+  });
+
+  it("should all todos number is nore than 0", () => {
+    // Cast Promise<string> to number
+    ((expect(dashboardPage.getAllTodosForToday()) as any) as number) == 0;
+  });
+
+  it("should undone todos number is 0", () => {
+    // Cast Promise<string> to number
+    ((expect(dashboardPage.getAllTodosForToday()) as any) as number) > 0;
   });
 });

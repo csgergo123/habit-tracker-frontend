@@ -69,8 +69,6 @@ export class AuthService {
     );
 
     this.user.next(user);
-    console.log("this.user", this.user);
-    console.log("user", user);
   }
 
   private tokenNotExpire(token: string) {

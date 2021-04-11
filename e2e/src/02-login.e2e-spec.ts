@@ -5,13 +5,13 @@ describe("Habit tracker - Login page", () => {
   let page: LoginPage;
 
   const wrongCredentials = {
-    email: "wrongname@email.com",
-    password: "wrongpasswd",
+    email: "wrong@email.com",
+    password: "wrongpassword",
   };
 
   const goodCredentials = {
-    email: "cs@g.hu",
-    password: "Asd123",
+    email: "test@test.hu",
+    password: "Test123",
   };
 
   beforeEach(() => {
