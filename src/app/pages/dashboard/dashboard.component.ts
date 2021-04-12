@@ -2,12 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import Chart from "chart.js";
 
 // core components
-import {
-  chartOptions,
-  parseOptions,
-  colors,
-  chartExample2,
-} from "../../variables/charts";
+import { chartOptions, parseOptions, colors } from "../../variables/charts";
 import { HabitsService } from "../habits/habits.service";
 import { TodosService } from "../todos/todos.service";
 
@@ -45,25 +40,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.initStatNumbers();
 
-    this.getHabitChart();
-
     this.datasets = [
       this.dailyHabitDonesForThisWeek,
       this.weeklyHabitDonesForThisMonth,
     ];
     this.data = this.dailyHabitDonesForThisWeek;
 
-    var chartOrders = document.getElementById("chart-orders");
-
     parseOptions(Chart, chartOptions());
-
-    /*var chartOrders = document.getElementById("chart-orders");
-
-    var ordersChart = new Chart(chartOrders, {
-      type: "bar",
-      options: chartExample2.options,
-      data: chartExample2.data,
-    });*/
 
     var chartHabits = document.getElementById("chart-habits");
 
@@ -74,28 +57,23 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  // public updateOptions() {
-  //   this.habitsChart.data.datasets[0].data = this.data;
-  //   this.habitsChart.update();
-  // }
-
   public updatDaily() {
-    this.habitChart.data.datasets[0].data = this.dailyHabitDonesForThisWeek;
-    this.habitChart.data.labels = [
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat",
-      "Sun",
-    ];
+    this.habitChart.data.datasets[0].data = this.dailyHabitDonesForThisWeek.map(
+      (data) => data.dones
+    );
+    this.habitChart.data.labels = this.dailyHabitDonesForThisWeek.map(
+      (data) => data.day
+    );
     this.habitsChart.update();
   }
 
   public updateWeekly() {
-    this.habitChart.data.datasets[0].data = this.weeklyHabitDonesForThisMonth;
-    this.habitChart.data.labels = ["1", "2", "3", "4"];
+    this.habitChart.data.datasets[0].data = this.weeklyHabitDonesForThisMonth.map(
+      (data) => data.dones
+    );
+    this.habitChart.data.labels = this.weeklyHabitDonesForThisMonth.map(
+      (data) => data.week
+    );
     this.habitsChart.update();
   }
 
@@ -116,15 +94,13 @@ export class DashboardComponent implements OnInit {
     this.habitService
       .getDailyHabitDonesForThisWeek()
       .subscribe((dailyHabitDones) => {
-        console.log("dailyHabitDones", dailyHabitDones);
         this.dailyHabitDonesForThisWeek = dailyHabitDones;
         this.updatDaily();
       });
     this.habitService
       .getWeeklyHabitDonesForThisMonth()
       .subscribe((weeklyHabitDone) => {
-        this.weeklyHabitDonesForThisMonth = [1, 2, 3, 4];
-        //this.habitChart.data.datasets[0].data = weeklyHabitDone;
+        this.weeklyHabitDonesForThisMonth = weeklyHabitDone;
       });
 
     this.habitChart = {
@@ -146,16 +122,14 @@ export class DashboardComponent implements OnInit {
         },
       },
       data: {
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        labels: [],
         datasets: [
           {
             label: "Done habits",
-            data: [0, 0, 0, 0, 0, 0, 0],
+            data: [],
           },
         ],
       },
     };
   }
-
-  private getHabitChart() {}
 }

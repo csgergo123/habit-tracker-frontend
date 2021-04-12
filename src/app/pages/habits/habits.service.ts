@@ -75,7 +75,7 @@ export class HabitsService {
   getWeeklyHabitDonesForThisMonth() {
     const httpOptions = this.getAuthHeader();
     return this.http.get<[]>(
-      `${env.backendUrl}/habit-dones/daily/last-week`,
+      `${env.backendUrl}/habit-dones/weekly/last-month`,
       httpOptions
     );
   }
