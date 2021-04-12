@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
   dailyHabitDonesForThisWeek;
   weeklyHabitDonesForThisMonth;
 
+  habitChartHeaderText: string;
+
   habitChart: any;
 
   isFetching = false;
@@ -65,6 +67,7 @@ export class DashboardComponent implements OnInit {
       (data) => data.day
     );
     this.habitsChart.update();
+    this.habitChartHeaderText = "Fulfilled daily habits for the last week";
   }
 
   public updateWeekly() {
@@ -75,6 +78,7 @@ export class DashboardComponent implements OnInit {
       (data) => data.week
     );
     this.habitsChart.update();
+    this.habitChartHeaderText = "Fulfilled weekly habits for the last month";
   }
 
   private initStatNumbers() {
