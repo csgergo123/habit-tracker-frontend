@@ -138,7 +138,7 @@ export class DashboardComponent implements OnInit {
               },
               ticks: {
                 callback: function (value) {
-                  return value;
+                  return value % 1 == 0 ? value : "";
                 },
               },
             },
