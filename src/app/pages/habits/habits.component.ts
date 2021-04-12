@@ -97,7 +97,7 @@ export class HabitsComponent implements OnInit {
         console.log(result);
         // Remove the habit from habits array by id
         let removeIndex = this.habits
-          .map(function (habit) {
+          .map(function (habit: Habit) {
             return habit.id;
           })
           .indexOf(habitId);
