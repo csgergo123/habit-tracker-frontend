@@ -18,7 +18,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/habits",
     title: "Habits",
-    icon: "ni ni-calendar-grid-58 text-blue",
+    icon: "fas fa-calendar-check text-blue",
     class: "",
   },
   {
