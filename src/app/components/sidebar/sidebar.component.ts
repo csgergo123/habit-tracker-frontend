@@ -22,12 +22,6 @@ export const ROUTES: RouteInfo[] = [
     class: "",
   },
   {
-    path: "/calendar",
-    title: "Calendar",
-    icon: "fas fa-calendar text-blue",
-    class: "",
-  },
-  {
     path: "/todos",
     title: "Todos",
     icon: "ni ni-check-bold text-blue",
