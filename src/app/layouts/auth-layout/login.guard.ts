@@ -13,17 +13,22 @@ export class LoginGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
-    route: ActivatedRouteSnapshot,
+    activatedRoute: ActivatedRouteSnapshot,
     router: RouterStateSnapshot
   ):
     | boolean
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    const user = this.authService.currentUser;
-    if (!user) {
-      return true;
+    const accessToken = activatedRoute.params.accessToken;
+    if (accessToken) {
+      this.authService.storeAccessToken(accessToken);
     }
-    return this.router.createUrlTree(["/dashboard"]);
+    const user = this.authService.currentUser;
+    if (user) {
+      return this.router.createUrlTree(["/dashboard"]);
+    }
+
+    return true;
   }
 }

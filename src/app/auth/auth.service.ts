@@ -71,6 +71,10 @@ export class AuthService {
     this.user.next(user);
   }
 
+  storeAccessToken(accessToken: string) {
+    localStorage.setItem("accessToken", accessToken);
+  }
+
   private tokenNotExpire(token: string) {
     return !this.jwt.isTokenExpired(token);
   }
