@@ -5,6 +5,7 @@ import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
 import { UserProfileComponent } from "../../pages/user-profile/user-profile.component";
 import { HabitsComponent } from "src/app/pages/habits/habits.component";
 import { TodosComponent } from "src/app/pages/todos/todos.component";
+import { CalendarComponent } from "src/app/pages/calendar/calendar.component";
 
 export const AdminLayoutRoutes: Routes = [
   {
@@ -16,6 +17,11 @@ export const AdminLayoutRoutes: Routes = [
     path: "habits",
     canActivate: [AuthGuard],
     component: HabitsComponent,
+  },
+  {
+    path: "calendar",
+    canActivate: [AuthGuard],
+    component: CalendarComponent,
   },
   {
     path: "todos",
