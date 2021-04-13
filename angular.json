@@ -23,7 +23,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "allowedCommonJsDependencies": ["chart.js"],
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/favicon.ico", "src/assets", "_redirects"],
             "styles": ["src/styles.scss", "src/assets/scss/argon.scss"],
             "scripts": [
               "node_modules/chart.js/dist/Chart.min.js",
