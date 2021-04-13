@@ -33,9 +33,8 @@ export class AuthService {
           if (response && response.accessToken) {
             this.handleAuthentication(response.accessToken);
 
-            localStorage.setItem("accessToken", response.accessToken);
-
-            return true;
+            if (this.storeAccessToken(response.accessToken)) return true;
+            else return false;
           } else return false;
         })
       );
@@ -71,8 +70,16 @@ export class AuthService {
     this.user.next(user);
   }
 
-  storeAccessToken(accessToken: string) {
-    localStorage.setItem("accessToken", accessToken);
+  storeAccessToken(token: string): boolean {
+    if (!token) {
+      return null;
+    }
+    if (!this.tokenNotExpire(token)) {
+      return null;
+    }
+
+    localStorage.setItem("accessToken", token);
+    return true;
   }
 
   private tokenNotExpire(token: string) {
