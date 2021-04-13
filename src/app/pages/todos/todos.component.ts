@@ -12,10 +12,10 @@ import { TodosService } from "./todos.service";
   styleUrls: ["./todos.component.css"],
 })
 export class TodosComponent implements OnInit {
-  private todos: Todo[];
-  isFetching = false;
-  createTodoError = "";
-  color: string;
+  public todos: Todo[];
+  public isFetching = false;
+  public createTodoError = "";
+  public color: string;
 
   constructor(
     private todoService: TodosService,

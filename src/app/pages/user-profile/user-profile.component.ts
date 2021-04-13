@@ -8,7 +8,7 @@ import { User } from "src/app/models/user/entities/User";
   styleUrls: ["./user-profile.component.scss"],
 })
 export class UserProfileComponent implements OnInit {
-  user: User;
+  public user: User;
 
   constructor(private authService: AuthService) {}
 

@@ -10,10 +10,10 @@ import { environment as env } from "src/environments/environment";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  invalidLogin: boolean;
-  isLoading = false;
-  error = "";
-  googleLoginUrl = `${env.backendUrl}/users/google`;
+  public invalidLogin: boolean;
+  public isLoading = false;
+  public error = "";
+  public googleLoginUrl = `${env.backendUrl}/users/google`;
 
   constructor(
     private router: Router,

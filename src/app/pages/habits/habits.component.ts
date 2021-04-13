@@ -12,10 +12,10 @@ import { HabitsService } from "./habits.service";
   styleUrls: ["./habits.component.css"],
 })
 export class HabitsComponent implements OnInit {
-  private habits: Habit[];
-  isFetching = false;
-  createHabitError = "";
-  color: string;
+  public habits: Habit[];
+  public isFetching = false;
+  public createHabitError = "";
+  public color: string;
 
   constructor(
     private habitService: HabitsService,

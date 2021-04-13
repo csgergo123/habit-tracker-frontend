@@ -22,6 +22,12 @@ export const ROUTES: RouteInfo[] = [
     class: "",
   },
   {
+    path: "/calendar",
+    title: "Calendar",
+    icon: "fas fa-calendar text-blue",
+    class: "",
+  },
+  {
     path: "/todos",
     title: "Todos",
     icon: "ni ni-check-bold text-blue",
@@ -44,7 +50,7 @@ export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, public authService: AuthService) {}
 
   ngOnInit() {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
