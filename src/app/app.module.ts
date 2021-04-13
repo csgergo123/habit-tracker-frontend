@@ -16,9 +16,8 @@ import { CommonModule } from "@angular/common";
 
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
-import { HabitsComponent } from "./pages/habits/habits.component";
 import { ColorPickerModule } from "ngx-color-picker";
-import { TodosComponent } from "./pages/todos/todos.component";
+import { CalendarComponent } from "./pages/calendar/calendar.component";
 
 @NgModule({
   imports: [
@@ -33,7 +32,12 @@ import { TodosComponent } from "./pages/todos/todos.component";
     AppRoutingModule,
     ColorPickerModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
+  declarations: [
+    AppComponent,
+    AdminLayoutComponent,
+    AuthLayoutComponent,
+    CalendarComponent,
+  ],
   providers: [AuthService],
   bootstrap: [AppComponent],
 })
