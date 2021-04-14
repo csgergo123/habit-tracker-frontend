@@ -16,7 +16,7 @@ import { CommonModule } from "@angular/common";
 
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
-import { ColorPickerModule } from "ngx-color-picker";
+
 import { CalendarComponent } from "./pages/calendar/calendar.component";
 
 @NgModule({
@@ -30,7 +30,6 @@ import { CalendarComponent } from "./pages/calendar/calendar.component";
     RouterModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    ColorPickerModule,
   ],
   declarations: [
     AppComponent,

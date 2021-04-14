@@ -17,6 +17,10 @@ export class HabitsComponent implements OnInit {
   public createHabitError = "";
   public color: string;
 
+  colorPicker;
+  cpOutputFormat;
+  cpToggle;
+
   constructor(
     private habitService: HabitsService,
     private modalService: NgbModal

@@ -5,6 +5,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 
 import { ClipboardModule } from "ngx-clipboard";
+import { ColorPickerModule } from "ngx-color-picker";
 
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../pages/dashboard/dashboard.component";
@@ -24,6 +25,7 @@ import { TodosComponent } from "src/app/pages/todos/todos.component";
     NgbModule,
     ClipboardModule,
     ComponentsModule,
+    ColorPickerModule,
   ],
   declarations: [
     DashboardComponent,
