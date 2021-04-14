@@ -29,25 +29,30 @@
       </div>
       <!-- Card stats -->
       <div class="row">
-        <!-- All habits -->
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
+        <!-- Habits -->
+        <div class="col-xl-6 col-lg-12">
+          <div class="card card-stats mb-4 mb-xl-0" style="min-height: 92px">
             <div class="card-body">
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">
-                    All habits for today
+                    To be performed / All habits for today
                   </h5>
                   <span id="number-of-habits" class="h2 font-weight-bold mb-0">
-                    {{ numberOfHabits }}
+                    {{ numberOfHabitsToDo }} / {{ numberOfHabits }}
                   </span>
                 </div>
                 <div class="col-auto">
-                  <div
+                  <!-- <div
                     class="icon icon-shape bg-danger text-white rounded-circle shadow"
                   >
                     <i class="far fa-calendar-alt"></i>
-                  </div>
+                  </div> -->
+                  <img
+                    id="habit-img"
+                    style="max-width: 60px"
+                    src="../assets/img/icons/habit-min.png"
+                  />
                 </div>
               </div>
               <!-- <p class="mt-3 mb-0 text-muted text-sm">
@@ -57,56 +62,32 @@
             </div>
           </div>
         </div>
-        <!-- Habits to do -->
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
+        <!-- Todos -->
+        <div class="col-xl-6 col-lg-12">
+          <div class="card card-stats mb-4 mb-xl-0" style="min-height: 92px">
             <div class="card-body">
               <div class="row">
                 <div class="col">
                   <h5 class="card-title text-uppercase text-muted mb-0">
-                    Habits to do for today
+                    Undone / All todos for today
                   </h5>
-                  <span
-                    id="number-of-habits-to-do"
-                    class="h2 font-weight-bold mb-0"
-                  >
-                    {{ numberOfHabitsToDo }}
+                  <span id="number-of-todos" class="h2 font-weight-bold mb-0">
+                    {{ numberOfUndoneTodos }} / {{ numberOfTodos }}
                   </span>
                 </div>
-                <div class="col-auto">
-                  <div
-                    class="icon icon-shape bg-warning text-white rounded-circle shadow"
-                  >
-                    <i class="far fa-calendar-plus"></i>
-                  </div>
-                </div>
-              </div>
-              <!-- <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                <span class="text-nowrap">Since last week</span>
-              </p> -->
-            </div>
-          </div>
-        </div>
-        <!-- All todos -->
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">
-                    All todos for today
-                  </h5>
-                  <span id="number-of-todos" class="h2 font-weight-bold mb-0">{{
-                    numberOfTodos
-                  }}</span>
-                </div>
-                <div class="col-auto">
-                  <div
+                <div
+                  class="col-auto m-auto align-items-center d-flex justify-content-center"
+                >
+                  <!-- <div
                     class="icon icon-shape bg-yellow text-white rounded-circle shadow"
                   >
                     <i class="fas fa-list-alt"></i>
-                  </div>
+                  </div> -->
+                  <img
+                    id="habit-img"
+                    style="max-width: 70px"
+                    src="../assets/img/todo/todo.png"
+                  />
                 </div>
               </div>
               <!-- <p class="mt-3 mb-0 text-muted text-sm">
@@ -114,39 +95,6 @@
                   ><i class="fas fa-arrow-down"></i> 1.10%</span
                 >
                 <span class="text-nowrap">Since yesterday</span>
-              </p> -->
-            </div>
-          </div>
-        </div>
-        <!-- Undone todos -->
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">
-                    Undone todos for today
-                  </h5>
-                  <span
-                    id="number-of-undone-todos"
-                    class="h2 font-weight-bold mb-0"
-                  >
-                    {{ numberOfUndoneTodos }}
-                  </span>
-                </div>
-                <div class="col-auto">
-                  <div
-                    class="icon icon-shape bg-info text-white rounded-circle shadow"
-                  >
-                    <i class="fas fa-exclamation"></i>
-                  </div>
-                </div>
-              </div>
-              <!-- <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"
-                  ><i class="fas fa-arrow-up"></i> 12%</span
-                >
-                <span class="text-nowrap">Since last month</span>
               </p> -->
             </div>
           </div>
