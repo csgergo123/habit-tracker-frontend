@@ -139,6 +139,7 @@
     data-toggle="modal"
     data-target="#addTodoModal"
     (click)="open(content)"
+    aria-label="add-todo"
   >
     <i class="fa fa-plus"></i>
   </button>
@@ -153,6 +154,7 @@
       class="close"
       aria-label="Close"
       (click)="modal.dismiss()"
+      aria-label="exit-add-todo"
     >
       <span aria-hidden="true">&times;</span>
     </button>
@@ -193,6 +195,7 @@
                   class="btn btn-default"
                   (click)="date_added.toggle()"
                   type="button"
+                  aria-label="todo-issue-date"
                 >
                   <i class="fa fa-calendar" aria-hidden="true"></i>
                 </button>
@@ -220,6 +223,7 @@
                   class="btn btn-default"
                   (click)="toggle = !toggle"
                   type="button"
+                  aria-label="todo-color"
                 >
                   <i class="fas fa-palette"></i>
                 </button>
@@ -240,6 +244,7 @@
       class="btn btn-primary"
       (click)="createTodo(f) == true ? modal.dismiss() : ''"
       [disabled]="!f.valid"
+      aria-label="save-todo"
     >
       Save
     </button>
