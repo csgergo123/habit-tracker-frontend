@@ -6,25 +6,25 @@
         <div class="col mb-4">
           <h1 class="lead text-white">
             If you are not familiar with atomic habits yet, please take a minute
-            to visit.
+            to visit this
             <a href="https://jamesclear.com/atomic-habits" target="_blank" rel="noopener">
               <u
-                ><strong><span class="text-white">this</span></strong></u
+                ><strong><span class="text-white">website</span></strong></u
               >
             </a>
-            website first.
+            first.
             <br />
-            In fact,
+            In fact, you can find a little
             <a
               href="https://s3.amazonaws.com/jamesclear/Atomic+Habits/Habits+Cheat+Sheet.pdf"
               target="_blank"
               rel="noopener"
             >
               <u
-                ><strong><span class="text-white">here’s</span></strong></u
+                ><strong><span class="text-white">help</span></strong></u
               >
             </a>
-            a little help at the beginning.
+            at the beginning.
           </h1>
         </div>
       </div>
@@ -36,10 +36,10 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">
+                  <p class="h4 card-title text-uppercase mb-0">
                     To be performed / All habits for today
-                  </h5>
-                  <span id="number-of-habits" class="h2 font-weight-bold mb-0">
+                  </p>
+                  <span id="number-of-habits" class="h1 font-weight-bold mb-0">
                     {{ numberOfHabitsToDo }} / {{ numberOfHabits }}
                   </span>
                 </div>
@@ -53,6 +53,7 @@
                     id="habit-img"
                     style="max-width: 60px"
                     src="../assets/img/icons/habit-min.png"
+                    alt="habit"
                   />
                 </div>
               </div>
@@ -69,10 +70,10 @@
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">
+                  <p class="h4 card-title text-uppercase mb-0">
                     Undone / All todos for today
-                  </h5>
-                  <span id="number-of-todos" class="h2 font-weight-bold mb-0">
+                  </p>
+                  <span id="number-of-todos" class="h1 font-weight-bold mb-0">
                     {{ numberOfUndoneTodos }} / {{ numberOfTodos }}
                   </span>
                 </div>
@@ -85,9 +86,10 @@
                     <i class="fas fa-list-alt"></i>
                   </div> -->
                   <img
-                    id="habit-img"
+                    id="todo-img"
                     style="max-width: 70px"
                     src="../assets/img/todo/todo.png"
+                    alt="todo"
                   />
                 </div>
               </div>
@@ -134,7 +136,7 @@
                     (click)="clicked = true; clicked1 = false"
                   >
                     <span class="d-none d-md-block">Daily habits</span>
-                    <span class="d-md-none">Daily</span>
+                    <span class="d-md-none"><strong>Daily</strong></span>
                   </a>
                 </li>
                 <li
@@ -151,7 +153,7 @@
                     (click)="clicked = false; clicked1 = true"
                   >
                     <span class="d-none d-md-block">Weekly habits</span>
-                    <span class="d-md-none">Weekly</span>
+                    <span class="d-md-none"><strong>Weekly</strong></span>
                   </a>
                 </li>
               </ul>
